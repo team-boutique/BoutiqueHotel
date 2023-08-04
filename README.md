@@ -5,10 +5,12 @@
 `Back-End` 와 `DB`를 연결해 호텔, 모텔, 리조트 등을 예약하는 서비스
 
 ## 0️⃣ 개발 환경
-- ORACLE
+ - ORACLE
  - SQLDeveloper
  - Eclipse
  - JAVA 8 버전
+ - Miro
+ - Draw.io
 
 ## 1️⃣ 팀원 소개
 
