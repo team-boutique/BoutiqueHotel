@@ -20,7 +20,7 @@ public class Resorts extends Accommodation{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Resorts [pool=" + pool + "]";
+		return super.toString() + "\n리조트 " + "\t수영장: " + pool;
 	}
 	
 	

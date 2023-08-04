@@ -3,7 +3,9 @@ package com.jdbc.dao;
 import config.ServerInfo;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.jdbc.exception.DuplicateSSNException;
 import com.jdbc.exception.InvalidBookingException;
@@ -159,8 +161,24 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public void deleteBooking(String ssn, int id) {
-
+    public void deleteBooking(String ssn, int id) throws SQLException, RecordNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = getConnect();
+            if(isExist(conn, id, ssn)) {
+                String query = "DELETE book WHERE ssn = ? AND id = ?";
+                ps = conn.prepareStatement(query);
+                ps.setString(1, ssn);
+                ps.setInt(2, id);
+                
+                System.out.println(ps.executeUpdate()+"개의 예약이 삭제되었습니다.");
+            }else {
+                throw new RecordNotFoundException("해당하는 예약 정보가 없습니다.");
+            }
+        }finally {
+            closeAll(conn, ps);
+        }
     }
 
     @Override
@@ -276,7 +294,7 @@ public class Database implements DatabaseTemplate{
                 ps.setString(6, breakfast);
                 ps.setInt(7, accom.getPeople());
                 
-                System.out.println(ps.executeUpdate()+"개의 호텔 등록 성공...addAccom()..");
+                System.out.println(ps.executeUpdate()+"개의 호텔 등록 성공");
             }
             else if(accom.getAccomType().equals("Pension")) {
                 String query = "INSERT INTO accommodation(id, accom_name, location, accom_type, price, bbq, people) VALUES(id_seq.nextVal, ?, ?, ?, ?, ?, ?)";
@@ -289,7 +307,7 @@ public class Database implements DatabaseTemplate{
                 else bbq = "N";
                 ps.setString(5, bbq);
                 ps.setInt(6, accom.getPeople());
-                System.out.println(ps.executeUpdate()+"개의 펜션 등록 성공...addAccom()..");
+                System.out.println(ps.executeUpdate()+"개의 펜션 등록 성공");
             }
             else if(accom.getAccomType().equals("Resorts")){
                 String query = "INSERT INTO accommodation(id, accom_name, location, accom_type, price, pool, people) VALUES(id_seq.nextVal, ?, ?, ?, ?, ?, ?)";
@@ -302,7 +320,7 @@ public class Database implements DatabaseTemplate{
                 else pool = "N";
                 ps.setString(5, pool);
                 ps.setInt(6, accom.getPeople());
-                System.out.println(ps.executeUpdate()+"개의 리조트 등록 성공...addAccom()..");
+                System.out.println(ps.executeUpdate()+"개의 리조트 등록 성공");
             }
             else {    // 모텔 등록
                 String query = "INSERT INTO accommodation(id, accom_name, location, accom_type, price, pool, people) VALUES(id_seq.nextVal, ?, ?, ?, ?, ?, ?)";
@@ -315,7 +333,7 @@ public class Database implements DatabaseTemplate{
                 else pc = "N";
                 ps.setString(5, pool);
                 ps.setInt(6, accom.getPeople());
-                System.out.println(ps.executeUpdate()+"개의 모텔 등록 성공...addAccom()..");
+                System.out.println(ps.executeUpdate()+"개의 모텔 등록 성공");
                 
             }
         }finally {
@@ -440,9 +458,40 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public ArrayList<Customer> getCustomerByName(String name) {
-        return null;
+    public ArrayList<Customer> getCustomerByName(String name) throws SQLException { //해연
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Customer> custList = new ArrayList<>();
+        
+    try {
+        conn = getConnect();
+        String query = "SELECT ssn, cust_name, email, tel, birthdate, point FROM customer WHERE cust_name = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, name);
+        rs = ps.executeQuery();
+
+        while(rs.next()) {
+            custList.add(new Customer(
+                            rs.getString("ssn"), rs.getString("cust_name"), rs.getString("email"), 
+                            rs.getString("tel"), 
+                            new Date(
+                                     Integer.parseInt(rs.getString("birthdate").substring(0,3)),
+                                     Integer.parseInt(rs.getString("birthdate").substring(4,5)),
+                                     Integer.parseInt(rs.getString("birthdate").substring(6))
+                                    ),
+                            rs.getInt("point"),
+                            getBookList(rs.getString("ssn"))
+                    ));
+        }
+
+    } finally {
+        closeAll(conn, ps, rs);
+
     }
+    
+    return custList;
+}
 
     @Override
     public Customer getCustomerBySsn(String ssn) throws NumberFormatException, SQLException {
@@ -507,9 +556,61 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public Accommodation getAccom(int id) {
-        return null;
-    }
+    public Accommodation getAccom(int id) throws SQLException {
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Accommodation result = null;
+
+    try {
+        connect = getConnect();
+        String query = "SELECT id ,accom_name, location, accom_type, price, star ,breakfast ,bbq ,pc ,pool ,people FROM accommodation WHERE id = ?";
+        ps = connect.prepareStatement(query);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+        
+        while(rs.next()) {
+            if(rs.getString("star")!=null) {
+                boolean temp = false;
+                if(rs.getString("breakfast").equals("Y")) {
+                    temp = true;
+                }
+                result = (new Hotel(rs.getInt("id"), rs.getString("accom_name"), 
+                        rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("star"),rs.getInt("people"),
+                        temp));
+            }
+            else if(rs.getString("bbq")!=null){
+                boolean temp = false;
+                if(rs.getString("bbq").equals("Y")) {
+                    temp = true;
+                }
+                result =(new Pension(rs.getInt("id"), rs.getString("accom_name"), 
+                        rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("people"),temp));
+            }
+            else if(rs.getString("pc")!=null) {
+                boolean temp = false;
+                if(rs.getString("pc").equals("Y")) {
+                    temp = true;
+                }
+                result = new Motel(rs.getInt("id"), rs.getString("accom_name"), 
+                        rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("people"),temp);
+            }
+            else if(rs.getString("pool")!=null) {
+                boolean temp = false;
+                if(rs.getString("pool").equals("Y")) {
+                    temp = true;
+                }
+                result = (new Motel(rs.getInt("id"), rs.getString("accom_name"), 
+                        rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("people"),temp));
+            }
+        }
+
+} finally {
+    closeAll(connect, ps, rs);
+}
+    return result;
+
+}
 
     @Override
     public ArrayList<Accommodation> printAllAccom() throws SQLException {
@@ -585,10 +686,6 @@ public class Database implements DatabaseTemplate{
                     }result.add(new Motel(rs.getInt("id"), rs.getString("accom_name"), 
                             rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("people"),temp));
                 }
-//                }
-//                result.add(new Accommodation(rs.getInt("id"), rs.getString("accom_name"), 
-//                        rs.getString("location"), rs.getString("accom_type"),rs.getInt("price"),rs.getInt("star"),
-//                        rs.getString("breakfast"),rs.getString("bbq"),rs.getString("pc"),rs.getString("pool"),rs.getInt("people")));
             }
         }finally {
             closeAll(conn, ps, rs);
@@ -597,32 +694,147 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price) {
-        return null;
+    public ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price) throws SQLException {
+        ArrayList<Accommodation> list = new ArrayList<>();
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            connect = getConnect();
+            String query = "SELECT id, accom_name, location, accom_type, price, people FROM accommodation WHERE ? <= price AND price <= ? ORDER BY 1";
+            ps = connect.prepareStatement(query);
+            ps.setInt(1, s_price);
+            ps.setInt(2, e_price);
+
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                list.add(new Accommodation(
+                        rs.getInt("id"),
+                        rs.getString("accom_name"),
+                        rs.getString("location"),
+                        rs.getString("accom_type"),
+                        rs.getInt("price"),
+                        rs.getInt("people")
+                        ));
+            }
+
+        } finally {
+            closeAll(connect, ps, rs);
+        }
+        
+        return list;
     }
 
     @Override
-    public ArrayList<Accommodation> findAccomsByStar(int star) {
-        return null;
+    public ArrayList<Accommodation> findAccomsByStar(int star) throws SQLException {
+        ArrayList<Accommodation> list = new ArrayList<>();
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            connect = getConnect();
+            String query = "SELECT id, accom_name, location, accom_type, price, people, star, breakfast FROM accommodation WHERE star = ? ORDER BY 1";
+            ps = connect.prepareStatement(query);
+            ps.setInt(1, star);
+
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                list.add(new Hotel(
+                        rs.getInt("id"),
+                        rs.getString("accom_name"),
+                        rs.getString("location"),
+                        rs.getString("accom_type"),
+                        rs.getInt("price"),
+                        rs.getInt("people"),
+                        rs.getInt("star"),
+                        rs.getBoolean("breakfast")
+                        ));
+            }
+
+        } finally {
+            closeAll(connect, ps, rs);
+        }
+        
+        return list;
     }
 
     @Override
-    public ArrayList<Accommodation> findAccomsByAccomName(String name) {
-        return null;
+    public ArrayList<Accommodation> findAccomsByAccomName(String name) throws SQLException {
+        ArrayList<Accommodation> list = new ArrayList<>();
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            connect = getConnect();
+            String query = "SELECT id, accom_name, location, accom_type, price, people, star FROM accommodation WHERE accom_name = ? ORDER BY 1";
+            ps = connect.prepareStatement(query);
+            ps.setString(1, name);
+
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                list.add(new Accommodation(
+                        rs.getInt("id"),
+                        rs.getString("accom_name"),
+                        rs.getString("location"),
+                        rs.getString("accom_type"),
+                        rs.getInt("price"),
+                        rs.getInt("people")
+                        ));
+            }
+
+
+        } finally {
+            closeAll(connect, ps, rs);
+        }
+        
+        return list;
     }
 
     @Override
-    public ArrayList<Accommodation> findAccomsByType(String type) {
-        return null;
-    }
+    public ArrayList<Accommodation> findAccomsByType(String type) throws SQLException {
+        ArrayList<Accommodation> list = new ArrayList<>();
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            connect = getConnect();
+            String query = "SELECT id, accom_name, location, accom_type, price, people, star FROM accommodation WHERE accom_type = ? ORDER BY 1";
+            ps = connect.prepareStatement(query);
+            ps.setString(1, type);
+
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                list.add(new Accommodation(
+                        rs.getInt("id"),
+                        rs.getString("accom_name"),
+                        rs.getString("location"),
+                        rs.getString("accom_type"),
+                        rs.getInt("price"),
+                        rs.getInt("people")
+                        ));
+            }
+        } finally {
+            closeAll(connect, ps, rs);
+        }
+        
+        return list;
+        }
 
     @Override
     public void playGame(String ssn) throws SQLException {
         Customer cust = getCustomerBySsn(ssn);
         int point = cust.getPoint();
-        int n = (int)(Math.random() * 1000) + 100;
+        int n = (int)(Math.random() * 10) + 1;
         boolean[] arr = new boolean[n+1];
-        for(int i=0; i<n; i++) arr[i] = true;
+        for(int i=0; i<=n; i++) arr[i] = true;
 
         for(int i=2; i<(int)(Math.sqrt(n))+1; i++){
             if(arr[i]) {
@@ -633,6 +845,7 @@ public class Database implements DatabaseTemplate{
                 }
             }
         }
+//        System.out.println(Arrays.toString(arr));
 
         System.out.println("오늘의 랜덤생성숫자: "+n+"는 소수인가요? ");
 
@@ -644,6 +857,7 @@ public class Database implements DatabaseTemplate{
 
                 String query = "UPDATE customer SET point=? WHERE ssn=?";
                 point += 10;
+                ps = conn.prepareStatement(query);
                 ps.setInt(1, point);
                 ps.setString(2, ssn);
                 if(ps.executeUpdate() != 0){
@@ -657,6 +871,81 @@ public class Database implements DatabaseTemplate{
 
         }else{
             System.out.println("소수가 아닙니다! 게임에서 패배했습니다.");
+        }
+    }
+    
+    public void birthPoint() throws SQLException {
+        LocalDate now = LocalDate.now();
+        int monthValue = now.getMonthValue();
+        int dayOfMonth = now.getDayOfMonth();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = getConnect();
+
+            String query =
+            		"UPDATE customer SET point = CASE WHEN birthdate LIKE ? THEN point + 100 WHEN birthdate LIKE ? THEN point + 10 ELSE point END";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%"+String.format("%02d", monthValue)+String.format("%02d", dayOfMonth));
+            ps.setString(2, "%"+String.format("%02d", monthValue)+"__%");
+            
+            ps.executeUpdate();
+            
+            System.out.println("이달의 생일 포인트가 적립되었습니다.");
+                
+        } finally {
+            closeAll(conn, ps, rs);
+
+        }
+    }
+    
+    public ArrayList<Accommodation> printPriceRank() throws SQLException {
+
+        ArrayList<Accommodation> list = new ArrayList<>();
+        Connection connect = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+	    try {
+	        connect = getConnect();
+	        String query = "SELECT id, accom_name, accom_type, price, RANK() OVER (ORDER BY price DESC) AS price_rank FROM accommodation ORDER BY price desc";
+	        ps = connect.prepareStatement(query);
+	        rs = ps.executeQuery();
+	
+	        while(rs.next()) {
+	            System.out.println("id: "+ rs.getInt("id")+ "\t" + "이름: " +rs.getString("accom_name") + "\t" + "가격: " + rs.getInt("price") + "\t"  + rs.getInt("price_rank"));
+	        }
+	
+		} finally {
+		    closeAll(connect, ps, rs);
+		}
+		
+		return list;
+	    
+	}
+    
+    public void avgByType() throws SQLException{
+    	Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = getConnect();
+
+            String query = "SELECT accom_type, count(accom_type) as cnt, round(avg(price)) as avg_price FROM accommodation GROUP BY accom_type";
+            ps = conn.prepareStatement(query);
+            
+            rs = ps.executeQuery();
+            while(rs.next()) {
+            	System.out.println(rs.getString("accom_type")+"의 평균 가격\t"+rs.getInt("avg_price")+" ("+rs.getInt("cnt")+"개)");
+            }
+            
+                
+        } finally {
+            closeAll(conn, ps, rs);
+
         }
     }
 }

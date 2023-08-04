@@ -20,7 +20,7 @@ public class Motel extends Accommodation{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Motel [pc=" + pc + "]";
+		return super.toString() + "\n모텔 " +"PC: " + pc;
 	}
 	
 	

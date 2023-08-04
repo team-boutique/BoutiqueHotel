@@ -20,7 +20,7 @@ public class Pension extends Accommodation{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Pension [bbq=" + bbq + "]";
+		return super.toString() + "\n팬션 " + "\tBBQ장: " + bbq;
 	}
 	
 	

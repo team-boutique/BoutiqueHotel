@@ -90,7 +90,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [ssn=" + ssn + ", custName=" + custName + ", email=" + email + ", tel=" + tel + ", birthdate="
-				+ birthdate + ", point=" + point + ", bookingList=" + bookingList + "]";
+	    return "고객명: " +custName+ "\t 주민번호: " + ssn + "\t 이메일: " + email + "\n연락처: " + tel + "\t 생일: "
+	            + birthdate + "\t 잔여포인트:" + point;
 	}
 }

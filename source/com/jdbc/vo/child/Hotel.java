@@ -30,7 +30,7 @@ public class Hotel extends Accommodation{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Hotel [star=" + star + ", breakfast=" + breakfast + "]";
+		return super.toString() + "\n호텔 " + star + "성\t조식: " + breakfast;
 	}
 	
 	

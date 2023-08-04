@@ -28,7 +28,7 @@ public interface DatabaseTemplate {
     boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException, RecordNotFoundException, InvalidBookingException;
     void booking(Book book) throws SQLException, RecordNotFoundException, InvalidBookingException; //void booking(String ssn, int id, String bookDate, int people);
     void updateBooking(Book book) throws SQLException, RecordNotFoundException; //void updateBooking(String ssn, int id, String bookDate);
-    void deleteBooking(String ssn, int id);
+    void deleteBooking(String ssn, int id) throws SQLException, RecordNotFoundException;
 
     //고객 관련
     //isExist(String ssn) 먼저
@@ -44,18 +44,18 @@ public interface DatabaseTemplate {
 
     //고객 조회 기능
     ArrayList<Book> getBookList(String ssn) throws SQLException;
-    ArrayList<Customer> getCustomerByName(String name);
+    ArrayList<Customer> getCustomerByName(String name) throws SQLException;
     Customer getCustomerBySsn(String ssn) throws NumberFormatException, SQLException;
     ArrayList<Customer> getAllCustomer() throws NumberFormatException, SQLException;
 
     //호텔 조회 기능
-    Accommodation getAccom(int id);
+    Accommodation getAccom(int id) throws SQLException;
     ArrayList<Accommodation> printAllAccom() throws SQLException;
     ArrayList<Accommodation> findAccomsBylocation(String location) throws SQLException;
-    ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price);
-    ArrayList<Accommodation> findAccomsByStar(int star);
-    ArrayList<Accommodation> findAccomsByAccomName(String name);
-    ArrayList<Accommodation> findAccomsByType(String type);
+    ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price) throws SQLException;
+    ArrayList<Accommodation> findAccomsByStar(int star) throws SQLException;
+    ArrayList<Accommodation> findAccomsByAccomName(String name) throws SQLException;
+    ArrayList<Accommodation> findAccomsByType(String type) throws SQLException;
 
     //알고리즘 기능
     void playGame(String ssn) throws SQLException;

@@ -70,10 +70,8 @@ public class Accommodation { //column의 정보가 그대로 들어가 있음
 
 	@Override
 	public String toString() {
-		return "Accommodation [id=" + id + ", accomName=" + accomName + ", location=" + location + ", accomType="
-				+ accomType + ", price=" + price + ", people=" + people + "]";
+	    return "숙소명: " + accomName + "\t 숙소분류: " + accomType + "\t 숙소번호: " + id + "\n 가격: " + String.format("%,d", price) + " 원/박" + "\t인원 수: " + people +"명";
 	}
-
 	
 
 }
