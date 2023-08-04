@@ -5,6 +5,12 @@ import config.ServerInfo;
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.jdbc.exception.InvalidBookingException;
+import com.jdbc.exception.RecordNotFoundException;
+import com.jdbc.vo.Accommodation;
+import com.jdbc.vo.Book;
+import com.jdbc.vo.Customer;
+
 public class Database implements DatabaseTemplate{
     private static Database db = new Database();
     private Database(){
@@ -60,12 +66,14 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException {
+    public boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException, RecordNotFoundException, InvalidBookingException {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        if(!isExist(conn, id)) throw new RecordNotFoundException;
-
+        if(!isExist(conn, id)) {
+        	throw new RecordNotFoundException();
+        }
+        
         String query = "SELECT book_date FROM book WHERE id=? AND book_date=?";
         ps = conn.prepareStatement(query);
         ps.setInt(1, id);
@@ -161,43 +169,43 @@ public class Database implements DatabaseTemplate{
     }
 
     @Override
-    public Accomodation getAccom(int id) {
+    public Accommodation getAccom(int id) {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> printAllAccom() {
+    public ArrayList<Accommodation> printAllAccom() {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> findAccomsBylocation(String location) {
+    public ArrayList<Accommodation> findAccomsBylocation(String location) {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> findAccomsByPrice(int s_price, int e_price) {
+    public ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price) {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> findAccomsByStar(int star) {
+    public ArrayList<Accommodation> findAccomsByStar(int star) {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> findAccomsByAccomName(String name) {
+    public ArrayList<Accommodation> findAccomsByAccomName(String name) {
         return null;
     }
 
     @Override
-    public ArrayList<Accomodation> findAccomsByType(String type) {
+    public ArrayList<Accommodation> findAccomsByType(String type) {
         return null;
     }
 
     @Override
     public void playGame(String ssn) throws SQLException {
-        Customer cust = getCustomer(ssn);
+        Customer cust = getCustomerBySsn(ssn);
         int point = cust.getPoint();
         int n = (int)(Math.random() * 1000) + 100;
         boolean[] arr = new boolean[n+1];

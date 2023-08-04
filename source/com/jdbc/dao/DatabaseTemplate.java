@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.jdbc.exception.InvalidBookingException;
+import com.jdbc.exception.RecordNotFoundException;
+import com.jdbc.vo.Accommodation;
+import com.jdbc.vo.Book;
+import com.jdbc.vo.Customer;
+
 public interface DatabaseTemplate {
     //공통 디비 관련 함수
     Connection getConnect() throws SQLException;
@@ -17,7 +23,7 @@ public interface DatabaseTemplate {
     boolean isExist(Connection conn, int id) throws SQLException;
 
     //예약 관련
-    boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException;
+    boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException, RecordNotFoundException, InvalidBookingException;
     void booking(Book book) throws SQLException; //void booking(String ssn, int id, String bookDate, int people);
     void updateBooking(Book book); //void updateBooking(String ssn, int id, String bookDate);
     void deleteBooking(String ssn, int id);
@@ -41,13 +47,13 @@ public interface DatabaseTemplate {
     ArrayList<Customer> getAllCustomer();
 
     //호텔 조회 기능
-    Accomodation getAccom(int id);
-    ArrayList<Accomodation> printAllAccom();
-    ArrayList<Accomodation> findAccomsBylocation(String location);
-    ArrayList<Accomodation> findAccomsByPrice(int s_price, int e_price);
-    ArrayList<Accomodation> findAccomsByStar(int star);
-    ArrayList<Accomodation> findAccomsByAccomName(String name);
-    ArrayList<Accomodation> findAccomsByType(String type);
+    Accommodation getAccom(int id);
+    ArrayList<Accommodation> printAllAccom();
+    ArrayList<Accommodation> findAccomsBylocation(String location);
+    ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price);
+    ArrayList<Accommodation> findAccomsByStar(int star);
+    ArrayList<Accommodation> findAccomsByAccomName(String name);
+    ArrayList<Accommodation> findAccomsByType(String type);
 
     //알고리즘 기능
     void playGame(String ssn) throws SQLException;
