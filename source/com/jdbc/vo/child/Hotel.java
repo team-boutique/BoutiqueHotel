@@ -6,8 +6,8 @@ public class Hotel extends Accommodation{
 	private int star;
 	private boolean breakfast;
 	
-	public Hotel(int star, boolean breakfast) {
-		super();
+	public Hotel(int id, String accomName, String location, String accomType, int price, int people, int star, boolean breakfast) {
+		super(id, accomName, location, accomType, price, people);
 		this.star = star;
 		this.breakfast = breakfast;
 	}

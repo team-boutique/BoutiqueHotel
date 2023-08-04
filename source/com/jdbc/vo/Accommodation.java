@@ -6,16 +6,18 @@ public class Accommodation { //column의 정보가 그대로 들어가 있음
 	private String location;
 	private String accomType;
 	private int price;
+	private int people;
 	  
 	public Accommodation(){}
 	
-	public Accommodation(int id, String accomName, String location, String accomType, int price) {
+	public Accommodation(int id, String accomName, String location, String accomType, int price, int people) {
 		super();
 		this.id = id;
 		this.accomName = accomName;
 		this.location = location;
 		this.accomType = accomType;
 		this.price = price;
+		this.people = people;
 	}
 	
 	public int getId() {
@@ -58,11 +60,21 @@ public class Accommodation { //column의 정보가 그대로 들어가 있음
 		this.price = price;
 	}
 
+	public int getPeople() {
+		return people;
+	}
+
+	public void setPeople(int people) {
+		this.people = people;
+	}
+
 	@Override
 	public String toString() {
 		return "Accommodation [id=" + id + ", accomName=" + accomName + ", location=" + location + ", accomType="
-				+ accomType + ", price=" + price + "]";
+				+ accomType + ", price=" + price + ", people=" + people + "]";
 	}
+
+	
 
 }
 

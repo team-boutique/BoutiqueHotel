@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.jdbc.exception.DuplicateSSNException;
 import com.jdbc.exception.InvalidBookingException;
 import com.jdbc.exception.RecordNotFoundException;
 import com.jdbc.vo.Accommodation;
@@ -21,35 +22,36 @@ public interface DatabaseTemplate {
     //ssn과 id로 존재 여부 확인하기
     boolean isExist(Connection conn, String ssn) throws SQLException;
     boolean isExist(Connection conn, int id) throws SQLException;
+    boolean isExist(Connection conn, int id, String ssn) throws SQLException;
 
     //예약 관련
     boolean canBook(Connection conn, int id, String bookDate, int people) throws SQLException, RecordNotFoundException, InvalidBookingException;
-    void booking(Book book) throws SQLException; //void booking(String ssn, int id, String bookDate, int people);
-    void updateBooking(Book book); //void updateBooking(String ssn, int id, String bookDate);
+    void booking(Book book) throws SQLException, RecordNotFoundException, InvalidBookingException; //void booking(String ssn, int id, String bookDate, int people);
+    void updateBooking(Book book) throws SQLException, RecordNotFoundException; //void updateBooking(String ssn, int id, String bookDate);
     void deleteBooking(String ssn, int id);
 
     //고객 관련
     //isExist(String ssn) 먼저
-    void addCustomer(Customer customer);
-    void updateCustomer(Customer customer);
-    void deleteCustomer(String ssn);
+    void addCustomer(Customer customer) throws SQLException, DuplicateSSNException;
+    void updateCustomer(Customer customer) throws SQLException, RecordNotFoundException;
+    void deleteCustomer(String ssn) throws SQLException, RecordNotFoundException;
 
     //숙소 관련
     //isExist(int id) 먼저
-    void addAccom(Accommodation accom);
-    void updateAccom(Accommodation accom);
-    void deleteAccom(int id);
+    void addAccom(Accommodation accom) throws SQLException;
+    void updateAccom(Accommodation accom) throws SQLException, RecordNotFoundException;
+    void deleteAccom(int id) throws SQLException, RecordNotFoundException;
 
     //고객 조회 기능
-    ArrayList<Book> getBook(String ssn);
+    ArrayList<Book> getBookList(String ssn) throws SQLException;
     ArrayList<Customer> getCustomerByName(String name);
-    Customer getCustomerBySsn(String ssn);
-    ArrayList<Customer> getAllCustomer();
+    Customer getCustomerBySsn(String ssn) throws NumberFormatException, SQLException;
+    ArrayList<Customer> getAllCustomer() throws NumberFormatException, SQLException;
 
     //호텔 조회 기능
     Accommodation getAccom(int id);
-    ArrayList<Accommodation> printAllAccom();
-    ArrayList<Accommodation> findAccomsBylocation(String location);
+    ArrayList<Accommodation> printAllAccom() throws SQLException;
+    ArrayList<Accommodation> findAccomsBylocation(String location) throws SQLException;
     ArrayList<Accommodation> findAccomsByPrice(int s_price, int e_price);
     ArrayList<Accommodation> findAccomsByStar(int star);
     ArrayList<Accommodation> findAccomsByAccomName(String name);

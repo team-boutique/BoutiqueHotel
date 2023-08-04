@@ -38,7 +38,7 @@ public class Date {
 
 	@Override
 	public String toString() {
-		return "Date [year=" + year + ", month=" + month + ", day=" + day + "]";
+		return year+String.format("%02d", month)+String.format("%02d", day);
 	}
 	
 }

@@ -5,8 +5,8 @@ import com.jdbc.vo.Accommodation;
 public class Motel extends Accommodation{
 	private boolean pc;
 
-	public Motel(boolean pc) {
-		super();
+	public Motel(int id, String accomName, String location, String accomType, int price, int people, boolean pc) {
+		super(id, accomName, location, accomType, price, people);
 		this.pc = pc;
 	}
 
