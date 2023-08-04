@@ -1,16 +1,16 @@
 #### Team-Boutique
 
-# È£ÅÚ ¿¹¾à ¼­ºñ½º ±¸Çö
+# í˜¸í…” ì˜ˆì•½ ì„œë¹„ìŠ¤ êµ¬í˜„ ðŸ¨
 
-`Back-End` ¿Í `DB`¸¦ ¿¬°áÇØ È£ÅÚ, ¸ðÅÚ, ¸®Á¶Æ® µîÀ» ¿¹¾àÇÏ´Â ¼­ºñ½º
+`Back-End` ì™€ `DB`ë¥¼ ì—°ê²°í•´ í˜¸í…”, ëª¨í…”, ë¦¬ì¡°íŠ¸ ë“±ì„ ì˜ˆì•½í•˜ëŠ” ì„œë¹„ìŠ¤
 
-## ?? °³¹ß È¯°æ
+## 0ï¸âƒ£ ê°œë°œ í™˜ê²½
 - ORACLE
  - SQLDeveloper
  - Eclipse
- - JAVA 8 ¹öÀü
+ - JAVA 8 ë²„ì „
 
-## ÆÀ¿ø ¼Ò°³
+## 1ï¸âƒ£ íŒ€ì› ì†Œê°œ
 
 <table>
     <tr>
@@ -19,7 +19,7 @@
 	    	<img src="https://avatars.githubusercontent.com/u/108059303?v=4?s=100" width="100px;" alt=""/>
 	    	<br/>
 	    	<sub>
-	    	<b>ÀÌÁØ¸ð</b>
+	    	<b>ì´ì¤€ëª¨</b>
 	    	<br/>
 	    	<img src="https://us-central1-progress-markdown.cloudfunctions.net/progress/100"/>
 	        </sub>
@@ -30,7 +30,7 @@
 	    	<img src="https://avatars.githubusercontent.com/u/97722177?v=4" width="100px;" alt=""/>
 	    	<br/>
 	    	<sub>
-	    	<b>Á¶¿ëÈÆ</b>
+	    	<b>ì¡°ìš©í›ˆ</b>
 	    	<br/>
 	    	<img src="https://us-central1-progress-markdown.cloudfunctions.net/progress/100"/>
 	        </sub>
@@ -42,7 +42,7 @@
 	    	<img src="https://avatars.githubusercontent.com/u/49315208?v=4" width="100px;" alt=""/>
 	    	<br/>
 	    	<sub>
-	    	<b>ÀÌÇØ¿¬</b>
+	    	<b>ì´í•´ì—°</b>
 	    	<br/>
 	    	<img src="https://us-central1-progress-markdown.cloudfunctions.net/progress/100"/>
 	        </sub>
@@ -54,7 +54,7 @@
 	    	<img src="https://avatars.githubusercontent.com/u/43288938?v=4?s=100" width="100px;" alt=""/>
 	    	<br/>
 	    	<sub>
-	    	<b>Á¶¾Æ¸§</b>
+	    	<b>ì¡°ì•„ë¦„</b>
 	    	<br/>
 	    	<img src="https://us-central1-progress-markdown.cloudfunctions.net/progress/100"/>
 	        </sub>
@@ -65,91 +65,91 @@
 
 <br/>
 
-## Usecase Diagram ¼³°è
-- [Usecase Dirgram ¼³°è Åø](draw.io)
-- ÇØ´ç ¼³°è¸¦ ±¸ÇöÇÏ±â À§ÇØ Usecase ¸¦ ¼³°è
+## 2ï¸âƒ£ Usecase Diagram ì„¤ê³„
+- [Usecase Dirgram ì„¤ê³„ íˆ´](draw.io)
+- í•´ë‹¹ ì„¤ê³„ë¥¼ êµ¬í˜„í•˜ê¸° ìœ„í•´ Usecase ë¥¼ ì„¤ê³„
 
 <br/>
 <img src="md_resources/resource_01.png" width=400/>
 <br/>
 
-°í°´Àº Å©°Ô 3°¡Áö `¿¹¾à, È¸¿ø°¡ÀÔ, Á¶È¸` ¿¡ Á¢±Ù ÇÒ ¼ö ÀÖÀ½
+ê³ ê°ì€ í¬ê²Œ 3ê°€ì§€ `ì˜ˆì•½, íšŒì›ê°€ìž…, ì¡°íšŒ` ì— ì ‘ê·¼ í•  ìˆ˜ ìžˆìŒ
 
-`¿¹¾à`À» ÇØ¾ß¸¸ ¿¹¾àÀ» `º¯°æ`, `Ãë¼Ò` ÇÒ ¼ö ÀÖ±â ‹š¹®¿¡ ¿¹¾à°ú ¿¹¾à Ãë¼Ò, º¯°æÀº ***include °ü°è***
+`ì˜ˆì•½`ì„ í•´ì•¼ë§Œ ì˜ˆì•½ì„ `ë³€ê²½`, `ì·¨ì†Œ` í•  ìˆ˜ ìžˆê¸° ë•Œë¬¸ì— ì˜ˆì•½ê³¼ ì˜ˆì•½ ì·¨ì†Œ, ë³€ê²½ì€ ***include ê´€ê³„***
 
 <br/>
 
-## DB ¸ðµ¨¸µ
+## 3ï¸âƒ£ DB ëª¨ë¸ë§
 
 <br/>
 <img src="md_resources/resource_02_DBModeling.png"  width=400/>
 <br/>
 
-`eXERD` ¸¦ ÀÌ¿ëÇØ **DB ¸ðµ¨¸µ**
+`eXERD` ë¥¼ ì´ìš©í•´ **DB ëª¨ë¸ë§**
 
-`Customer` (°í°´) ¿Í `Accommodation` (¼÷¼Ò) ´Â **¼­·Î ´Ù vs ´Ù °ü°è** ÀÌ¹Ç·Î °¢°¢ `PK` ¸¦ `FK` ·Î ÁÖ¾î 1 vs ´Ù ±¸Á¶·Î º¯°æÇØÁÖ¾î¾ß ÇÔ
+`Customer` (ê³ ê°) ì™€ `Accommodation` (ìˆ™ì†Œ) ëŠ” **ì„œë¡œ ë‹¤ vs ë‹¤ ê´€ê³„** ì´ë¯€ë¡œ ê°ê° `PK` ë¥¼ `FK` ë¡œ ì£¼ì–´ 1 vs ë‹¤ êµ¬ì¡°ë¡œ ë³€ê²½í•´ì£¼ì–´ì•¼ í•¨
 
-µû¶ó¼­ `Book` (¿¹¾à) table À» »ý¼ºÇØ ºñ½ÇÃ¼È­ ÇÔ
+ë”°ë¼ì„œ `Book` (ì˜ˆì•½) table ì„ ìƒì„±í•´ ë¹„ì‹¤ì²´í™” í•¨
 
 <br/>
 
-## Class Diagram ±¸¼º
+## 4ï¸âƒ£ Class Diagram êµ¬ì„±
 
 <br/>
 <img src="md_resources/resource_05_CD.drawio.png" width=600/>
 <br/>
 
-»ó´ÜÀÇ **DB ¸ðµ¨¸µÀ» ÀÌ¿ëÇØ Class Diagram À» ¼³°è** ÇßÀ½
+ìƒë‹¨ì˜ **DB ëª¨ë¸ë§ì„ ì´ìš©í•´ Class Diagram ì„ ì„¤ê³„** í–ˆìŒ
 
-°¢°¢ÀÇ `Hotel`, `Motel`, `Resort`, `Pension` Àº Æ¯Á¤ÇÑ º¯¼ö¸¦ °®°í ÀÖÀ¸¸ç `Accommodation` À» »ó¼Ó¹ÞÀ½
+ê°ê°ì˜ `Hotel`, `Motel`, `Resort`, `Pension` ì€ íŠ¹ì •í•œ ë³€ìˆ˜ë¥¼ ê°–ê³  ìžˆìœ¼ë©° `Accommodation` ì„ ìƒì†ë°›ìŒ
 
 <br/>
 
-## FE-UI ±¸Çö
-- FE ±â¼úÀ» »ç¿ëÇÏÁö ¾Ê¾Æµµ Ãâ·ÂÈ­¸éÀ» ±¸ÇöÀ» ÇØ¾ß ±¸Á¶¸¦ ÀÌÇØÇÏ±â ÆíÇÔ
-- »ý°¢Ä¡ ¸øÇÑ ºÎºÐÀ» ¶°¿Ã¸± ¼ö ÀÖÀ½
-- °í°´°ú °ü¸®ÀÚ·Î µÎ°¡Áö ±¸Çö
+## 5ï¸âƒ£ FE-UI êµ¬í˜„
+- FE ê¸°ìˆ ì„ ì‚¬ìš©í•˜ì§€ ì•Šì•„ë„ ì¶œë ¥í™”ë©´ì„ êµ¬í˜„ì„ í•´ì•¼ êµ¬ì¡°ë¥¼ ì´í•´í•˜ê¸° íŽ¸í•¨
+- ìƒê°ì¹˜ ëª»í•œ ë¶€ë¶„ì„ ë– ì˜¬ë¦´ ìˆ˜ ìžˆìŒ
+- ê³ ê°ê³¼ ê´€ë¦¬ìžë¡œ ë‘ê°€ì§€ êµ¬í˜„
 
 <br/>
 <img src="md_resources/resource_04_Customer.png" width=600/>
 <br/>
 
-»ó´Ü ¹Ù¿¡ ¼÷¼Ò ¸íÀ» ±âÀÔÇØ Ã£À» ¼ö ÀÖÀ½
+ìƒë‹¨ ë°”ì— ìˆ™ì†Œ ëª…ì„ ê¸°ìž…í•´ ì°¾ì„ ìˆ˜ ìžˆìŒ
 
-`È£ÅÚ`, `¸ðÅÚ`, `¸®Á¶Æ®`, `ÆÒ¼Ç` ¹öÆ°À» ÀÌ¿ëÇØ ÇÏ´ÜÀÇ `LIST` ¿¡ ÇØ´ç Á¶°Ç¿¡ ¸Â´Â Ãâ·Â ÇÒ ¼ö ÀÖÀ½
+`í˜¸í…”`, `ëª¨í…”`, `ë¦¬ì¡°íŠ¸`, `íŒ¬ì…˜` ë²„íŠ¼ì„ ì´ìš©í•´ í•˜ë‹¨ì˜ `LIST` ì— í•´ë‹¹ ì¡°ê±´ì— ë§žëŠ” ì¶œë ¥ í•  ìˆ˜ ìžˆìŒ
 
-`°¡°Ý´ëº°`, `Áö¿ªº°`·Î Á¶È¸ °¡´É
-
-<br/>
-
-Æ¯Á¤ È£ÅÚÀ» Å¬¸¯ ÈÄ ¿¹¾à³¯Â¥¸¦ ±âÀÔ, ¼÷¹Ú ¸í¼ö ¸¦ ±âÀÔ ÇØ ¿¹¾à
+`ê°€ê²©ëŒ€ë³„`, `ì§€ì—­ë³„`ë¡œ ì¡°íšŒ ê°€ëŠ¥
 
 <br/>
 
-**¿ìÃø¿¡´Â È¸¿øÁ¤º¸ ±âÀÔ¶õÀÌ ÀÖÀ¸¸ç ÇØ´ç Á¤º¸¸¦ µî·ÏÇÏ¸é ÁÖ¹Îµî·Ï¹øÈ£ (SSN) ÀÌ Áßº¹µÇÁö ¾Ê´Â ÀÌ»ó ÇØ´ç °í°´À» µî·Ï**
-
-Áßº¹µÇ´Â SSN À» °®°í ÀÖÀ» °æ¿ì `Exception` ¹ß»ý
+íŠ¹ì • í˜¸í…”ì„ í´ë¦­ í›„ ì˜ˆì•½ë‚ ì§œë¥¼ ê¸°ìž…, ìˆ™ë°• ëª…ìˆ˜ ë¥¼ ê¸°ìž… í•´ ì˜ˆì•½
 
 <br/>
 
-ÇÏ´Ü¿¡ ÇØ´ç °í°´ÀÇ ¿¹¾à Á¤º¸¸¦ Á¶È¸ °¡´É, ¸¸¾à ¿¹¾à ³¯Â¥¸¦ º¯°æÇÒ °æ¿ì Áß´Ü¿¡ ³¯Â¥ ±âÀÔÀ» ÇÑ ÈÄ ¼öÁ¤
+**ìš°ì¸¡ì—ëŠ” íšŒì›ì •ë³´ ê¸°ìž…ëž€ì´ ìžˆìœ¼ë©° í•´ë‹¹ ì •ë³´ë¥¼ ë“±ë¡í•˜ë©´ ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ (SSN) ì´ ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ì´ìƒ í•´ë‹¹ ê³ ê°ì„ ë“±ë¡**
+
+ì¤‘ë³µë˜ëŠ” SSN ì„ ê°–ê³  ìžˆì„ ê²½ìš° `Exception` ë°œìƒ
+
+<br/>
+
+í•˜ë‹¨ì— í•´ë‹¹ ê³ ê°ì˜ ì˜ˆì•½ ì •ë³´ë¥¼ ì¡°íšŒ ê°€ëŠ¥, ë§Œì•½ ì˜ˆì•½ ë‚ ì§œë¥¼ ë³€ê²½í•  ê²½ìš° ì¤‘ë‹¨ì— ë‚ ì§œ ê¸°ìž…ì„ í•œ í›„ ìˆ˜ì •
 
 <br/>
 <img src="md_resources/resource_03_Admin.png" width=600/>
 <br/>
 
-ÇØ´ç È­¸éÀº °ü¸®ÀÚ ÅÇ.
+í•´ë‹¹ í™”ë©´ì€ ê´€ë¦¬ìž íƒ­.
 
-»ó´ÜÀÇ °Ë»ö ¹Ù¿¡¼­ **¾ÆÀÌµð**, **ÀÌ¸§**, **Áö¿ª** µî Ä«Å×°í¸®¿¡ ÀÏÄ¡ÇÏ´Â °ªÀ» Ã£¾Æ ¸®½ºÆ®¿¡ Ãâ·Â
+ìƒë‹¨ì˜ ê²€ìƒ‰ ë°”ì—ì„œ **ì•„ì´ë””**, **ì´ë¦„**, **ì§€ì—­** ë“± ì¹´í…Œê³ ë¦¬ì— ì¼ì¹˜í•˜ëŠ” ê°’ì„ ì°¾ì•„ ë¦¬ìŠ¤íŠ¸ì— ì¶œë ¥
 
-¸¸¾à È£ÅÚÀ» Ãß°¡ÇÒ °æ¿ì ÇÏ´ÜÀÇ ¾÷Ã¼¸í°ú **Radio-Button** À» ÀÌ¿ëÇØ ¼÷¹Ú ½Ã¼³À» ¼±ÅÃ, È£ÅÚÀÇ µî±ÞÀ» º°¸ð¾çÀ» ´­·¯ Àû¿ë ¹× ÃÖ´ë ¼ö¿ë°¡´ÉÀÎ¿ø ÀÔ·Â
+ë§Œì•½ í˜¸í…”ì„ ì¶”ê°€í•  ê²½ìš° í•˜ë‹¨ì˜ ì—…ì²´ëª…ê³¼ **Radio-Button** ì„ ì´ìš©í•´ ìˆ™ë°• ì‹œì„¤ì„ ì„ íƒ, í˜¸í…”ì˜ ë“±ê¸‰ì„ ë³„ëª¨ì–‘ì„ ëˆŒëŸ¬ ì ìš© ë° ìµœëŒ€ ìˆ˜ìš©ê°€ëŠ¥ì¸ì› ìž…ë ¥
 
-ÀÔ·Â ¹ÞÀº °ªÀ¸·Î µî·Ï°ú ¼öÁ¤ÀÌ °¡´ÉÇÔ
+ìž…ë ¥ ë°›ì€ ê°’ìœ¼ë¡œ ë“±ë¡ê³¼ ìˆ˜ì •ì´ ê°€ëŠ¥í•¨
 
 <br/>
 
-¿ìÃø °í°´Á¶È¸ ¶õÀº °í°´ Á¶È¸¸¦ ÇÒ ¼ö ÀÖÀ¸¸ç **¾ÆÀÌµð**, **ÀÌ¸§**À» ÀÌ¿ëÇØ Á¶È¸
+ìš°ì¸¡ ê³ ê°ì¡°íšŒ ëž€ì€ ê³ ê° ì¡°íšŒë¥¼ í•  ìˆ˜ ìžˆìœ¼ë©° **ì•„ì´ë””**, **ì´ë¦„**ì„ ì´ìš©í•´ ì¡°íšŒ
 
-ÇÏ´Ü¿¡ ***°í°´ÀÇ »ó¼¼Á¤º¸¸¦ Á¶È¸*** ÇÒ ¼ö ÀÖÀ½
+í•˜ë‹¨ì— ***ê³ ê°ì˜ ìƒì„¸ì •ë³´ë¥¼ ì¡°íšŒ*** í•  ìˆ˜ ìžˆìŒ
 
-¸Ç ***¿ìÃø¿¡´Â ¼±ÅÃ °í°´ÀÇ ¿¹¾à ¸®½ºÆ®***¸¦ º¼ ¼ö ÀÖÀ½
+ë§¨ ***ìš°ì¸¡ì—ëŠ” ì„ íƒ ê³ ê°ì˜ ì˜ˆì•½ ë¦¬ìŠ¤íŠ¸***ë¥¼ ë³¼ ìˆ˜ ìžˆìŒ
