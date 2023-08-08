@@ -303,13 +303,13 @@ public interface DatabaseTemplate {
 따라서 결과값 출력을 **Console** 로 확인
 
 <p style="display: flex; gap:5px;">
-<img src="md_resources/console1.png" width=280/>
-<img src="md_resources/console2.png" width=280/>
-<img src="md_resources/console3.png" width=280/>
+<img src="md_resources/console1.png" width=220px height=360px/>
+<img src="md_resources/console2.png" width=220px height=360px/>
+<img src="md_resources/console3.png" width=220px height=360px/>
 <p/>
 
 <br/>
-<img src="md_resources/console4.png" width=280/>
+<img src="md_resources/console4.png" width=220px/>
 <br/>
 
 각각의 `시나리오`를 구성해 해당 시나리오에 알맞는 값을 **입출력**
@@ -364,8 +364,8 @@ public interface DatabaseTemplate {
             </sub>
         </a>
     	</td>
-    	<td>안녕하세요</td>
-    	<td>안녕하세요</td>
+    	<td>usecas diagram, class diagram, db modeling, business logic 작성 방법과 그 필요성에 대해서 알 수 있어 좋았다</td>
+    	<td>꼼꼼하게 인터페이스를 작성했다고 생각했지만 여기저기서 조금씩 잘못된 부분이 나왔고, 에러가 발생한 부분을 찾는데 오래 걸렸다는 점이 아쉬웠다</td>
     <tr/>
     	<tr>
     	<td align="center">
