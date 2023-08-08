@@ -284,11 +284,9 @@ public interface DatabaseTemplate {
 
 해당 프로젝트 구동을 위해 DB 에 `기본 데이터 세팅`
 
-<p style="display: flex; gap: 5px;">
 <img src="md_resources/db_accommodation.png" width=280/>
 <img src="md_resources/db_book.png" width=280/>
 <img src="md_resources/db_customer.png" width=280/>
-</p>
 
 좌측부터 `Accommodation`, `Book`, `Customer` Table
 
@@ -336,8 +334,8 @@ public interface DatabaseTemplate {
             </sub>
         	</a>
     	</td>
-    	<td>알고 있는 것과 만들어 본 것은 다르다는 걸 다시금 느끼게 되는 계기가 되었음</td>
-    	<td>시간이 많이 부족해서 급하게 만들어 아쉬웠음</td>
+    	<td>알고 있는 것과 만들어 본 것은 다르다는 걸 다시금 느끼게 되는 계기가 되었다.</td>
+    	<td>시간이 2일밖에 주어지지 않아 설계를 시작할 때 빈약한 부분이 보여 아쉬웠고, 짧은 시간이었지만 합을 맞추며 정들었던 팀원들과 헤어질 생각을 하니 아쉽다.</td>
     <tr/>
 	<tr>
 		<td align="center">
@@ -350,8 +348,8 @@ public interface DatabaseTemplate {
 	        </sub>
 	    	</a>
     	</td>
-    	<td>안녕하세요</td>
-    	<td>안녕하세요</td>
+    	<td>우리팀의 의사소통이 원활하게 진행 되어서 만족스러웠으며 각자 주력으로 하는 분야가 달라서 겹치지 않고 분업이 잘 되어 서로 부족한 부분을 채워 줄 수 있어 좋았다.</td>
+    	<td>'남들이 이해하기 쉬운 코드를 짜야한다'는 것을 직접 느끼게 되었고 '기초 설계를 정말 꼼꼼히 해야한다'는 것을 배웠다.</td>
     <tr/>
 		<tr>
 		<td align="center">
@@ -364,8 +362,8 @@ public interface DatabaseTemplate {
             </sub>
         </a>
     	</td>
-    	<td>usecas diagram, class diagram, db modeling, business logic 작성 방법과 그 필요성에 대해서 알 수 있어 좋았다</td>
-    	<td>꼼꼼하게 인터페이스를 작성했다고 생각했지만 여기저기서 조금씩 잘못된 부분이 나왔고, 에러가 발생한 부분을 찾는데 오래 걸렸다는 점이 아쉬웠다</td>
+    	<td>usecas diagram, class diagram, db modeling, business logic 작성 방법과 그 필요성에 대해서 알 수 있어 좋았다.</td>
+    	<td>꼼꼼하게 인터페이스를 작성했다고 생각했지만 여기저기서 조금씩 잘못된 부분이 나왔고, 에러가 발생한 부분을 찾는데 오래 걸렸다는 점이 아쉬웠다.</td>
     <tr/>
     	<tr>
     	<td align="center">
@@ -378,8 +376,8 @@ public interface DatabaseTemplate {
             </sub>
         </a>
     	</td>
-    	<td>안녕하세요</td>
-    	<td>안녕하세요</td>
+    	<td>여러명이 함께하다보니 나의 부족한점을 보완해줄 수 있었다.</td>
+    	<td>처음부터 끝까지 이해를 하지 못하면 구멍이 생기는 것을 알게되는 계기가 되었다.</td>
     <tr/>
 
 </table>
