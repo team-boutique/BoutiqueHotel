@@ -9,7 +9,7 @@
 - ORACLE
 - SQLDeveloper
 - Eclipse
-- JAVA 8 버전
+- JAVA 11 버전
 - Miro (Front UI 설계 툴)
 - Draw.io (Usecase 설계 툴)
 
